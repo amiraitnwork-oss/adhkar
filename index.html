@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أذكاري | أذكار الصباح والمساء الصحيحة</title>
+<meta name="description" content="موقع أذكار الصباح والمساء الصحيحة بمصادرها من حصن المسلم والصحيحين، مع مسبحة إلكترونية وتحكم بحجم الخط والوضع الليلي">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-main:'IBM Plex Sans Arabic',system-ui,Tahoma,sans-serif;
+  --font-quran:'Amiri Quran','Amiri',serif;
+  --bg:#faf7f0;
+  --bg2:#fffdf8;
+  --card:#ffffff;
+  --text:#1e2a32;
+  --muted:#6b7a86;
+  --primary:#0f766e;
+  --primary-2:#0d5f59;
+  --gold:#c19a3d;
+  --gold-light:#fef6df;
+  --border:#ece3cf;
+  --shadow:0 10px 30px rgba(15,118,110,.08),0 2px 8px rgba(0,0,0,.05);
+  --radius:20px;
+  --fs:18px;
+}
+[data-theme="dark"]{
+  --bg:#0b1518;
+  --bg2:#0f1e22;
+  --card:#14282d;
+  --text:#eef6f3;
+  --muted:#9ab3ad;
+  --primary:#2dd4bf;
+  --primary-2:#5eead4;
+  --gold:#e2b94a;
+  --gold-light:rgba(226,185,74,.12);
+  --border:#1f3a40;
+  --shadow:0 10px 30px rgba(0,0,0,.35),0 2px 8px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--font-main);
+  background:var(--bg);color:var(--text);
+  font-size:var(--fs);line-height:2;
+  transition:background .3s,color .3s;
+  background-image:
+    radial-gradient(circle at 15% 0%,var(--gold-light) 0,transparent 320px),
+    radial-gradient(circle at 90% 10%,rgba(15,118,110,.08) 0,transparent 350px);
+  background-attachment:fixed;
+}
+a{color:inherit}
+.container{max-width:1080px;margin:0 auto;padding:0 18px 80px}
+/* header */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 86%,transparent);
+  border-bottom:1px solid var(--border);
+}
+.topbar-inner{max-width:1080px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.25rem}
+.logo-mark{
+  width:46px;height:46px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#0f766e,#14b8a6 60%,#c19a3d);
+  color:#fff;font-size:26px;box-shadow:var(--shadow);
+}
+.logo small{display:block;font-size:.78rem;color:var(--muted);font-weight:400;line-height:1.2}
+.controls{margin-inline-start:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.btn{
+  border:1px solid var(--border);background:var(--card);color:var(--text);
+  border-radius:999px;padding:8px 14px;cursor:pointer;font-family:inherit;
+  font-size:.92rem;display:inline-flex;align-items:center;gap:7px;
+  transition:.2s;box-shadow:0 1px 0 rgba(0,0,0,.04);
+}
+.btn:hover{transform:translateY(-1px);border-color:var(--primary)}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:#fff;font-weight:600}
+[data-theme="dark"] .btn.primary{color:#062a27}
+.btn.icon{width:42px;height:42px;padding:0;justify-content:center;font-size:1.15rem;font-weight:700}
+.font-group{display:flex;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:3px}
+.font-group button{border:0;background:transparent;color:var(--text);width:38px;height:34px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:700;font-size:1rem}
+.font-group button:hover{background:var(--gold-light)}
+.font-val{min-width:52px;text-align:center;font-size:.85rem;color:var(--muted)}
+/* hero */
+.hero{
+  margin:26px 0 18px;background:linear-gradient(135deg,#0f766e 0%,#115e59 45%,#1a3a3a 100%);
+  color:#fff;border-radius:28px;padding:34px 28px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+[data-theme="dark"] .hero{background:linear-gradient(135deg,#0e2e2b,#142f2d 60%,#1d3d33)}
+.hero::before,.hero::after{
+  content:"";position:absolute;border:1.5px solid rgba(255,255,255,.14);border-radius:50%;
+}
+.hero::before{width:320px;height:320px;left:-90px;top:-90px}
+.hero::after{width:220px;height:220px;left:60px;top:-60px;border-color:rgba(194,154,61,.45)}
+.hero h1{margin:0 0 6px;font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.5}
+.hero p{margin:0;color:#d8efe c;color:#d9efeb;max-width:640px;font-size:1rem;line-height:1.9}
+.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;font-size:.88rem;backdrop-filter:blur(6px)}
+.pill.gold{background:rgba(194,154,61,.22);border-color:rgba(194,154,61,.55)}
+/* tabs */
+.tabs{position:sticky;top:71px;z-index:40;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);padding:10px 0;border-bottom:1px dashed var(--border)}
+.tabs-inner{display:flex;gap:10px;overflow:auto;padding:4px 2px}
+.tab{white-space:nowrap;border:1px solid var(--border);background:var(--card);padding:10px 20px;border-radius:999px;cursor:pointer;font-family:inherit;font-weight:600;color:var(--muted)}
+.tab.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+[data-theme="light"] .tab.active{background:#1e2a32;color:#fff}
+/* progress */
+.progress-wrap{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:14px 16px;margin:18px 0;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.progress-bar{flex:1;min-width:180px;height:12px;background:color-mix(in srgb,var(--text) 10%,transparent);border-radius:999px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--gold));border-radius:999px;transition:width .4s}
+.progress-txt{font-weight:700;font-size:.95rem}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px;margin-top:8px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px 18px 16px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  display:flex;flex-direction:column;transition:.25s;
+}
+.card::before{content:"";position:absolute;right:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--gold),var(--primary))}
+.card.done{outline:2px solid var(--primary);background:linear-gradient(var(--card),var(--card)) padding-box,linear-gradient(135deg,var(--primary),var(--gold)) border-box}
+.card.done::after{
+  content:"تم ✓";position:absolute;left:14px;top:12px;background:var(--primary);color:#fff;
+  font-size:.78rem;font-weight:700;padding:3px 12px;border-radius:999px;
+}
+[data-theme="dark"] .card.done::after{color:#062a27;background:var(--primary)}
+.card-top{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.num{width:32px;height:32px;border-radius:10px;background:var(--gold-light);color:var(--gold);display:grid;place-items:center;font-weight:800;border:1px solid color-mix(in srgb,var(--gold) 30%,transparent)}
+.cat{font-size:.8rem;background:color-mix(in srgb,var(--primary) 10%,transparent);color:var(--primary);border:1px solid color-mix(in srgb,var(--primary) 25%,transparent);padding:2px 11px;border-radius:999px;font-weight:600}
+.repeat{margin-inline-start:auto;font-size:.82rem;font-weight:700;color:var(--muted);border:1px dashed var(--border);padding:2px 11px;border-radius:999px}
+.dhikr{font-size:1.02em;line-height:2.15;margin:4px 0 10px}
+.dhikr.quran{font-family:var(--font-quran);font-size:1.18em;line-height:2.2;background:var(--gold-light);border-radius:14px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--gold) 25%,transparent)}
+.meta{background:color-mix(in srgb,var(--text) 4%,transparent);border-radius:14px;padding:10px 12px;font-size:.86rem;line-height:1.9;margin-bottom:12px}
+.meta strong{color:var(--primary)}
+.meta .src{display:block;color:var(--muted);margin-top:2px}
+.counter{display:flex;align-items:center;gap:10px;margin-top:auto;background:color-mix(in srgb,var(--text) 3%,transparent);border:1px solid var(--border);border-radius:16px;padding:10px}
+.ring{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;font-weight:800;background:conic-gradient(var(--primary) var(--p,0%),color-mix(in srgb,var(--text) 12%,transparent) var(--p,0%));position:relative}
+.ring span{background:var(--card);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:.95rem;border:1px solid var(--border)}
+.count-btn{flex:1;border:0;border-radius:12px;padding:12px;cursor:pointer;font-family:inherit;font-weight:700;font-size:1rem;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;transition:.15s}
+.count-btn:active{transform:scale(.97)}
+[data-theme="dark"] .count-btn{color:#062a27}
+.mini{background:transparent;border:1px solid var(--border);border-radius:10px;padding:8px 10px;cursor:pointer;color:var(--muted);font-family:inherit}
+.mini:hover{color:var(--text);border-color:var(--primary)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.search{flex:1;min-width:220px;display:flex;background:var(--card);border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.search input{flex:1;border:0;background:transparent;padding:11px 18px;font-family:inherit;font-size:.95rem;color:var(--text);outline:none}
+/* tasbih section */
+.tasbih-hero{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:28px;text-align:center;box-shadow:var(--shadow)}
+.tasbih-circle{width:220px;height:220px;margin:18px auto;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) var(--p,0%),color-mix(in srgb,var(--text) 8%,transparent) var(--p,0%));padding:12px;cursor:pointer;user-select:none;transition:.1s}
+.tasbih-circle:active{transform:scale(.97)}
+.tasbih-inner{background:var(--bg2);border:1px solid var(--border);width:100%;height:100%;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tasbih-inner b{font-size:3rem;line-height:1}
+.targets{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0}
+.target{border:1px solid var(--border);background:var(--bg2);border-radius:999px;padding:7px 16px;cursor:pointer;font-family:inherit;color:var(--text)}
+.target.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.section{display:none}
+.section.active{display:block;animation:fade .3s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sources{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:var(--shadow);line-height:2}
+footer{margin-top:26px;text-align:center;color:var(--muted);font-size:.88rem}
+.hide{display:none!important}
+@media(max-width:600px){.tabs{top:132px}.hero{padding:24px 18px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="logo"><div class="logo-mark">☪</div><div>أذكاري <small>أذكار الصباح والمساء الصحيحة بمصادرها</small></div></div>
+    <div class="controls">
+      <div class="font-group" title="حجم الخط">
+        <button id="fMinus" aria-label="تصغير الخط">أ−</button>
+        <div class="font-val" id="fVal">100%</div>
+        <button id="fPlus" aria-label="تكبير الخط">أ+</button>
+      </div>
+      <button class="btn" id="themeBtn">🌙 ليلي</button>
+      <button class="btn" id="resetBtn">↺ تصفير</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="hero">
+    <h1 id="greet">🌅 أذكار الصباح والمساء</h1>
+    <p>جميع الأذكار هنا صحيحة وثابتة عن النبي ﷺ بمصادرها من الصحيحين والسنن وحصن المسلم. اضغط على زر التسبيح لكل ذكر بعدد مراته، وسيُحفظ تقدمك تلقائياً.</p>
+    <div class="hero-meta">
+      <span class="pill" id="hijri">…</span>
+      <span class="pill" id="greg">…</span>
+      <span class="pill gold" id="suggest">…</span>
+    </div>
+  </div>
+
+  <div class="tabs"><div class="tabs-inner">
+    <button class="tab active" data-tab="morning">🌅 أذكار الصباح</button>
+    <button class="tab" data-tab="evening">🌙 أذكار المساء</button>
+    <button class="tab" data-tab="tasbih">📿 المسبحة الإلكترونية</button>
+    <button class="tab" data-tab="about">📚 المصادر والفضل</button>
+  </div></div>
+
+  <div class="progress-wrap" id="progWrap">
+    <span class="progress-txt" id="progTxt">التقدم: 0 / 0</span>
+    <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+    <span class="progress-txt" id="progPct">0%</span>
+  </div>
+
+  <div class="toolbar" id="toolbar">
+    <div class="search"><input id="q" placeholder="🔍 ابحث في الأذكار… (مثال: الكرسي، الاستغفار)"></div>
+    <button class="btn" id="showDoneBtn">إظهار المكتملة فقط</button>
+  </div>
+
+  <div class="section active" id="sec-morning"><div class="grid" id="grid-morning"></div></div>
+  <div class="section" id="sec-evening"><div class="grid" id="grid-evening"></div></div>
+
+  <div class="section" id="sec-tasbih">
+    <div class="tasbih-hero">
+      <h2 style="margin:0">📿 المسبحة الإلكترونية</h2>
+      <p style="color:var(--muted);margin:6px 0">اضغط على الدائرة الكبيرة أو زر المسافة للتسبيح، مع اهتزاز عند كل 33</p>
+      <div class="targets">
+        <button class="target" data-t="33">33</button>
+        <button class="target active" data-t="100">100</button>
+        <button class="target" data-t="1000">1000</button>
+        <button class="target" data-t="0">مفتوح ∞</button>
+      </div>
+      <div class="tasbih-circle" id="bigCircle"><div class="tasbih-inner"><b id="tCount">0</b><small id="tTarget">الهدف: 100</small></div></div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+        <button class="btn primary" id="tTap">سبِّح</button>
+        <button class="btn" id="tReset">تصفير</button>
+      </div>
+      <p style="color:var(--muted);font-size:.9rem">سبحان الله • الحمد لله • الله أكبر • لا إله إلا الله • أستغفر الله</p>
+    </div>
+  </div>
+
+  <div class="section" id="sec-about">
+    <div class="sources">
+      <h2>📚 مصادر الأذكار ومنهج التصحيح</h2>
+      <p>اعتمدنا في هذا الموقع على <strong>حصن المسلم للقحطاني</strong> مع مراجعة الأحاديث على أصولها، فلا يُذكر إلا ما ثبتت صحته أو حُسّن إسناده:</p>
+      <ul>
+        <li><strong>صحيح البخاري وصحيح مسلم:</strong> آية الكرسي في أجرها، سيد الاستغفار، سبحان الله وبحمده 100، لا إله إلا الله 100، الإخلاص والمعوذتين.</li>
+        <li><strong>سنن أبي داود والترمذي والنسائي وابن ماجه:</strong> بسم الله الذي لا يضر، رضيت بالله رباً، حسبي الله، اللهم عافني، اللهم بك أصبحنا/أمسينا — كلها بتضعيف وحكم الألباني وابن باز.</li>
+        <li><strong>مسند أحمد والحاكم والطبراني:</strong> أصبحنا على فطرة الإسلام، يا حي يا قيوم، الصلاة على النبي ﷺ عشراً.</li>
+      </ul>
+      <p>🕰️ <strong>وقت الأذكار:</strong> الصباح من بعد الفجر حتى شروق الشمس (ويجزئ حتى الزوال)، والمساء من بعد العصر حتى غروب الشمس (ويجزئ حتى منتصف الليل) — وهو قول ابن تيمية وابن باز وابن عثيمين.</p>
+      <p>✒️ <strong>الخط:</strong> خط ثمانية العربي (IBM Plex Sans Arabic) للنصوص، وخط أميري للآيات القرآنية.</p>
+    </div>
+  </div>
+
+  <footer>صُنع بحب لذكر الله • { وَاذْكُر رَّبَّكَ كَثِيرًا } • راجع المصدر دائماً من حصن المسلم قبل النشر</footer>
+</div>
+
+<script>
+const MORNING=[
+{t:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ: ﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾",r:1,c:"قرآن",s:"سورة البقرة: 255",v:"من قالها حين يُصبح أُجير من الجن حتى يُمسي. رواه الحاكم 1/562 وصححه الألباني في الترغيب 1/273",q:1},
+{t:"بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ﴾ + ﴿قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ...﴾ + ﴿قُلْ أَعُوذُ بِرَبِّ النَّاسِ...﴾ (السور الثلاث كاملة)",r:3,c:"قرآن",s:"أبو داود 5082 والترمذي 3575 – حسّنه الألباني",v:"تكفيك من كل شيء. قالها النبي ﷺ لعبد الله بن خبيب",q:1},
+{t:"أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",r:1,c:"دعاء",s:"صحيح مسلم 2723",v:"من أذكار النبي ﷺ الثابتة كل صباح"},
+{t:"اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ",r:1,c:"دعاء",s:"الترمذي 3391 وأبو داود 5068 – صححه الألباني",v:"إقرار بالتوكل على الله في الحياة والموت"},
+{t:"سَيِّدُ الِاسْتِغْفَارِ: اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",r:1,c:"استغفار",s:"صحيح البخاري 6306",v:"من قالها موقناً بها حين يُصبح فمات من يومه دخل الجنة"},
+{t:"رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا",r:3,c:"ذكر",s:"أبو داود 5072 – حسّنه الألباني",v:"من قالها حين يُصبح وحين يُمسي كان حقاً على الله أن يُرضيه يوم القيامة"},
+{t:"بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",r:3,c:"حفظ",s:"أبو داود 5088 والترمذي 3388 – صححه الألباني",v:"لم تضرّه فجأة بلاء حتى يُصبح، ومن قالها حين يُصبح لم تضرّه حتى يُمسي"},
+{t:"حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ، عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ",r:7,c:"توكل",s:"أبو داود 5081 موقوفاً – جوّده ابن باز",v:"من قالها حين يُصبح وحين يُمسي سبع مرات كفاه الله ما أهمّه"},
+{t:"يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ، وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",r:1,c:"دعاء",s:"الحاكم 1/545 وصححه ووافقه الذهبي – حسّنه الألباني",v:"وصية النبي ﷺ لفاطمة رضي الله عنها أن تقولها صباحاً ومساءً"},
+{t:"اللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ، فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيكَهُ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ، وَأَنْ أَقْتَرِفَ عَلَى نَفْسِي سُوءًا أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",r:1,c:"دعاء",s:"أبو داود 5067 والترمذي 3392 – صححه الألباني",v:"أمر النبي ﷺ أبا بكر أن يقولها إذا أصبح وإذا أمسى"},
+{t:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِينِي وَدُنْيَايَ وَأَهْلِي وَمَالِي، اللَّهُمَّ اسْتُرْ عَوْرَاتِي وَآمِنْ رَوْعَاتِي، اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي، وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",r:1,c:"دعاء",s:"أبو داود 5074 وابن ماجه 3871 – صححه الألباني",v:"لم يكن النبي ﷺ يدع هؤلاء الكلمات حين يُصبح وحين يُمسي"},
+{t:"أَصْبَحْنَا عَلَى فِطْرَةِ الْإِسْلَامِ، وَعَلَى كَلِمَةِ الْإِخْلَاصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ ﷺ، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا وَمَا كَانَ مِنَ الْمُشْرِكِينَ",r:1,c:"ذكر",s:"مسند أحمد 15360 – صححه الألباني في الصحيحة 2989",v:"تجديد العهد مع الإسلام كل صباح"},
+{t:"اللَّهُمَّ مَا أَصْبَحَ بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ",r:1,c:"شكر",s:"أبو داود 5073 – حسّنه ابن باز",v:"من قالها حين يُصبح فقد أدّى شكر يومه"},
+{t:"اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ. اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ، اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ، لَا إِلَهَ إِلَّا أَنْتَ",r:3,c:"دعاء",s:"أبو داود 5090 – حسّنه الألباني",v:"كان النبي ﷺ يدعو بهن حين يُصبح وحين يُمسي ثلاثاً"},
+{t:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ",r:3,c:"تسبيح",s:"صحيح مسلم 2726",v:"قالها النبي ﷺ لجويرية، وهي تعدل ما قاله من بعد الفجر"},
+{t:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",r:100,c:"تهليل",s:"البخاري 3293 ومسلم 2691",v:"كانت له عدل عشر رقاب، وكُتبت له مائة حسنة، ومُحيت عنه مائة سيئة، وكانت له حرزاً من الشيطان. ومن قالها عشراً كان كمن أعتق أربعة أنفس"},
+{t:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",r:100,c:"تسبيح",s:"صحيح مسلم 2692",v:"حُطَّت خطاياه وإن كانت مثل زبد البحر، ولم يأت أحد بأفضل مما جاء به إلا من قال مثل ما قال أو زاد"},
+{t:"أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",r:100,c:"استغفار",s:"البخاري 6307 ومسلم 2702",v:"كان النبي ﷺ يستغفر في اليوم مائة مرة، وهو المغفور له"},
+{t:"اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",r:10,c:"صلاة",s:"الطبراني في الكبير – حسّنه الألباني في صحيح الترغيب 659",v:"من صلى عليَّ حين يُصبح عشراً وحين يُمسي عشراً أدركته شفاعتي يوم القيامة"},
+{t:"اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْبُخْلِ وَالْجُبْنِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",r:1,c:"دعاء",s:"أبو داود 1555 – صححه الألباني",v:"دعاء كشف الهم وقضاء الدين، علّمه النبي ﷺ لأبي أمامة"}
+];
+const EVENING=[
+{t:"أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ: ﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ... وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾ [البقرة:255]",r:1,c:"قرآن",s:"سورة البقرة: 255 – الحاكم وصححه الألباني",v:"من قالها حين يُمسي أُجير من الجن حتى يُصبح",q:1},
+{t:"سور الإخلاص والفلق والناس كاملة",r:3,c:"قرآن",s:"أبو داود 5082 والترمذي 3575",v:"تكفيك من كل شيء",q:1},
+{t:"أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ... رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",r:1,c:"دعاء",s:"صحيح مسلم 2723",v:"الذكر المسائي الثابت عن النبي ﷺ"},
+{t:"اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ",r:1,c:"دعاء",s:"الترمذي 3391 – صححه الألباني",v:"توكل وتسليم لله في المساء"},
+{t:"سَيِّدُ الِاسْتِغْفَارِ: اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ... فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",r:1,c:"استغفار",s:"صحيح البخاري 6306",v:"من قالها موقناً بها حين يُمسي فمات من ليلته دخل الجنة"},
+{t:"رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا",r:3,c:"ذكر",s:"أبو داود 5072",v:"كان حقاً على الله أن يُرضيه يوم القيامة"},
+{t:"بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",r:3,c:"حفظ",s:"أبو داود 5088 والترمذي 3388",v:"لم تضرّه فجأة بلاء حتى يُمسي"},
+{t:"أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",r:3,c:"حفظ",s:"صحيح مسلم 2709",v:"لم تضرّك حُمَة تلك الليلة. قالها النبي ﷺ لمن نزل منزلاً"},
+{t:"حَسْبِيَ اللَّهُ لَا إِلَهَ إِلَّا هُوَ، عَلَيْهِ تَوَكَّلْتُ وَهُوَ رَبُّ الْعَرْشِ الْعَظِيمِ",r:7,c:"توكل",s:"أبو داود 5081",v:"كفاه الله ما أهمّه من أمر الدنيا والآخرة"},
+{t:"يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْنِي كُلَّهُ، وَلَا تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ",r:1,c:"دعاء",s:"الحاكم وحسّنه الألباني",v:"وصية النبي ﷺ لفاطمة صباحاً ومساءً"},
+{t:"اللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ، فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ... أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ",r:1,c:"دعاء",s:"أبو داود 5067 والترمذي 3392",v:"يقولها إذا أصبح وإذا أمسى وإذا أخذ مضجعه"},
+{t:"اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ... وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي",r:1,c:"دعاء",s:"أبو داود 5074",v:"لم يكن يدعهن النبي ﷺ حين يُمسي وحين يُصبح"},
+{t:"أَمْسَيْنَا عَلَى فِطْرَةِ الْإِسْلَامِ، وَعَلَى كَلِمَةِ الْإِخْلَاصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ ﷺ، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ حَنِيفًا مُسْلِمًا وَمَا كَانَ مِنَ الْمُشْرِكِينَ",r:1,c:"ذكر",s:"أحمد 15360 – صححه الألباني",v:"تجديد الإيمان كل مساء"},
+{t:"اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِعْمَةٍ أَوْ بِأَحَدٍ مِنْ خَلْقِكَ فَمِنْكَ وَحْدَكَ لَا شَرِيكَ لَكَ، فَلَكَ الْحَمْدُ وَلَكَ الشُّكْرُ",r:1,c:"شكر",s:"أبو داود 5073",v:"من قالها حين يُمسي فقد أدّى شكر ليلته"},
+{t:"اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ (3 مرات) + اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْكُفْرِ وَالْفَقْرِ، وَأَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ (3 مرات)",r:3,c:"دعاء",s:"أبو داود 5090 – حسّنه الألباني",v:"من أذكار الصباح والمساء الثابتة"},
+{t:"لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",r:100,c:"تهليل",s:"البخاري 3293 ومسلم 2691",v:"حرز من الشيطان يومه حتى يُمسي، ولم يأت أحد بأفضل مما جاء به"},
+{t:"سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",r:100,c:"تسبيح",s:"مسلم 2692",v:"حُطَّت خطاياه وإن كانت مثل زبد البحر"},
+{t:"أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",r:100,c:"استغفار",s:"مسلم 2702",v:"إني لأستغفر الله في اليوم مائة مرة"},
+{t:"اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",r:10,c:"صلاة",s:"الطبراني – صحيح الترغيب 659",v:"تُدركه شفاعة النبي ﷺ يوم القيامة"},
+{t:"﴿آمَنَ الرَّسُولُ بِمَا أُنزِلَ إِلَيْهِ مِن رَّبِّهِ...﴾ آخر آيتين من سورة البقرة (285-286)",r:1,c:"قرآن",s:"البخاري 5009 ومسلم 808",v:"من قرأ بالآيتين من آخر سورة البقرة في ليلة كفتاه",q:1}
+];
+let state={tab:'morning',counts:{},font:100,theme:'light',onlyDone:false,q:''};
+try{const s=JSON.parse(localStorage.getItem('adhkari-v1')||'{}');state={...state,...s};}catch(e){}
+function save(){localStorage.setItem('adhkari-v1',JSON.stringify({counts:state.counts,font:state.font,theme:state.theme}));}
+function key(tab,i){return tab+':'+i;}
+function remaining(tab,i,total){const k=key(tab,i);return (state.counts[k]??total);}
+function render(){
+  document.documentElement.dataset.theme=state.theme;
+  document.getElementById('themeBtn').textContent=state.theme==='light'?'🌙 ليلي':'☀️ نهاري';
+  document.documentElement.style.setProperty('--fs',(18*state.font/100)+'px');
+  document.getElementById('fVal').textContent=state.font+'%';
+  renderGrid('morning',MORNING);renderGrid('evening',EVENING);updateProgress();
+  save();
+}
+function renderGrid(tab,data){
+  const grid=document.getElementById('grid-'+tab);grid.innerHTML='';
+  data.forEach((d,i)=>{
+    const left=remaining(tab,i,d.r);
+    const done=left<=0;
+    if(state.onlyDone&&!done) return;
+    if(state.q&&!(d.t+d.s+d.v+d.c).includes(state.q)) return;
+    const pct=d.r===1?(done?100:0):Math.round((d.r-left)/d.r*100);
+    const el=document.createElement('div');el.className='card'+(done?' done':'');
+    el.innerHTML=`
+      <div class="card-top"><span class="num">${i+1}</span><span class="cat">${d.c}</span><span class="repeat">التكرار: ${d.r} ${d.r>1?'مرات':'مرة'}</span></div>
+      <div class="dhikr ${d.q?'quran':''}">${d.t}</div>
+      <div class="meta"><strong>الفضل:</strong> ${d.v}<span class="src">📖 المصدر: ${d.s}</span></div>
+      <div class="counter">
+        <div class="ring" style="--p:${pct}%"><span>${done?'✓':left}</span></div>
+        <button class="count-btn">${done?'تم بحمد الله':'سبِّح • بقي '+left}</button>
+        <button class="mini" title="إعادة">↺</button>
+      </div>`;
+    const [ring,btn,rst]=[el.querySelector('.ring'),el.querySelector('.count-btn'),el.querySelector('.mini')];
+    btn.onclick=()=>{const k=key(tab,i);let v=(state.counts[k]??d.r);if(v>0){v--;state.counts[k]=v;if(navigator.vibrate)navigator.vibrate(15);clickFx(btn);}render();};
+    rst.onclick=()=>{delete state.counts[key(tab,i)];render();};
+    ring.style.cursor='pointer';ring.onclick=btn.onclick;
+    grid.appendChild(el);
+  });
+  if(!grid.children.length){grid.innerHTML='<div class="sources">لا توجد نتائج مطابقة. جرّب كلمة أخرى أو أظهر الكل.</div>';}
+}
+function clickFx(b){b.style.transform='scale(.96)';setTimeout(()=>b.style.transform='',120);}
+function curData(){return state.tab==='evening'?EVENING:MORNING;}
+function updateProgress(){
+  const hide=state.tab==='tasbih'||state.tab==='about';
+  document.getElementById('progWrap').classList.toggle('hide',hide);
+  document.getElementById('toolbar').classList.toggle('hide',hide);
+  if(hide) return;
+  const data=curData();let total=data.length,done=0;
+  data.forEach((d,i)=>{if(remaining(state.tab,i,d.r)<=0)done++;});
+  const p=total?Math.round(done/total*100):0;
+  document.getElementById('progTxt').textContent=`التقدم في ${state.tab==='morning'?'الصباح':'المساء'}: ${done} / ${total}`;
+  document.getElementById('progFill').style.width=p+'%';
+  document.getElementById('progPct').textContent=p+'%';
+}
+// tabs
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  state.tab=b.dataset.tab;
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('sec-'+state.tab).classList.add('active');
+  updateProgress();
+});
+// font
+document.getElementById('fPlus').onclick=()=>{state.font=Math.min(160,state.font+10);render();};
+document.getElementById('fMinus').onclick=()=>{state.font=Math.max(80,state.font-10);render();};
+document.getElementById('themeBtn').onclick=()=>{state.theme=state.theme==='light'?'dark':'light';render();};
+document.getElementById('resetBtn').onclick=()=>{if(confirm('تصفير كل التقدم؟')){state.counts={};tCount=0;updateT();render();}};
+document.getElementById('showDoneBtn').onclick=e=>{state.onlyDone=!state.onlyDone;e.target.textContent=state.onlyDone?'إظهار الكل':'إظهار المكتملة فقط';render();};
+document.getElementById('q').oninput=e=>{state.q=e.target.value.trim();render();};
+// dates + greeting
+(function(){
+  const now=new Date();const h=now.getHours();
+  document.getElementById('suggest').textContent=(h>=4&&h<16)?'☀️ الآن وقت أذكار الصباح':'🌙 الآن وقت أذكار المساء';
+  if(h>=4&&h<16){/* auto keep morning */}
+  else{document.querySelector('[data-tab="evening"]').click();}
+  try{
+    document.getElementById('hijri').textContent='📅 '+new Intl.DateTimeFormat('ar-SA-u-ca-islamic',{day:'numeric',month:'long',year:'numeric'}).format(now);
+    document.getElementById('greg').textContent=new Intl.DateTimeFormat('ar',{weekday:'long',day:'numeric',month:'long'}).format(now);
+  }catch(e){document.getElementById('hijri').textContent='';}
+})();
+// tasbih
+let tCount=parseInt(localStorage.getItem('tasbih')||'0'),tTarget=100;
+function updateT(){
+  document.getElementById('tCount').textContent=tCount;
+  document.getElementById('tTarget').textContent=tTarget===0?'مفتوح':('الهدف: '+tTarget);
+  const p=tTarget?Math.min(100,tCount/tTarget*100):(tCount%100);
+  document.getElementById('bigCircle').style.setProperty('--p',p+'%');
+  localStorage.setItem('tasbih',tCount);
+}
+function tap(){tCount++;if(navigator.vibrate)navigator.vibrate(tCount%33===0?[40,30,40]:10);updateT();}
+document.getElementById('bigCircle').onclick=tap;
+document.getElementById('tTap').onclick=tap;
+document.getElementById('tReset').onclick=()=>{tCount=0;updateT();};
+document.querySelectorAll('.target').forEach(b=>b.onclick=()=>{document.querySelectorAll('.target').forEach(x=>x.classList.remove('active'));b.classList.add('active');tTarget=parseInt(b.dataset.t);updateT();});
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&state.tab==='tasbih'){e.preventDefault();tap();}});
+updateT();render();
+</script>
+</body>
+</html>
